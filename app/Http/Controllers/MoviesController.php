@@ -42,3 +42,5 @@ class MoviesController extends Controller
 
 
 // как работает метод ->when() в builder
+//удалить таблицу users.
+//выполнить php artisan migrate
