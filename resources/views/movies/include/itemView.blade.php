@@ -4,7 +4,10 @@
         <div class=" d-flex bg-success m-3 justify-content-center" style="min-height: 70px;">
             <h5 class="card-title text-white align-self-center">{{$movie->title}}</h5>
         </div>
-        <p class="card-text ">{{$movie->description}}</p>
+        <p class="card-text ">
+            <div class="text text-dark bold">Rating: {{$rating}}</div>
+            {{$movie->description}}
+        </p>
         <div class="text-center bg-success mb-5">
             <p class="card-text text-white">Your price: {{number_format($movie->price, 2)}} $</p>
         </div>

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class MoviesController extends Controller
 {
@@ -17,19 +15,15 @@ class MoviesController extends Controller
             ->paginate(8);
 //        dd($movies);
 
-        return view('movies.index', [
-            'movies' => $movies
-//            'title' => 'All films'
-        ]);
+        return view('movies.index', compact('movies'));
     }
 
-    public function view(Movie $movie){
-        return view('movies.card', [
-            'movie' => $movie,
-            'title' => $movie->title,
-            'price' => $movie->price,
-            'description' => $movie->description
-        ]);
+    public function view(Movie $movie)
+    {
+        $this->setTitle($movie->title);
+        $rating = 10;
+
+        return view('movies.card', compact('movie', 'rating'));
     }
 
 }
@@ -47,3 +41,4 @@ class MoviesController extends Controller
 // сделать поиск по цене min max https://jqueryui.com/slider/#range
 
 
+// как работает метод ->when() в builder
