@@ -4,7 +4,7 @@
 <body>
 @include('layout.navigation')
 @if(!request()->routeIs('app.home'))
-    <h1>{{ $title??'title' }}</h1>
+{{--    <h1>{{ $title??'title' }}</h1>--}}
 @endif
 @yield('content')
 @include('layout.footer')

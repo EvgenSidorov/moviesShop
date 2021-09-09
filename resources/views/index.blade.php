@@ -9,7 +9,6 @@
                     @include('movies.include.item', ['product' => $movie])
                 </div>
             @endforeach
-
         </div>
     </div>
 </section>

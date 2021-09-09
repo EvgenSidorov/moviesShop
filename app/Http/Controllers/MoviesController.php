@@ -13,19 +13,22 @@ class MoviesController extends Controller
             ->when(request()->has('query'), function($q){
                 return $q->where('title', 'like', '%'.request('query').'%');
             })
-            ->paginate(12);
+            ->orderBy('price', 'desc')
+            ->paginate(8);
 //        dd($movies);
 
         return view('movies.index', [
-            'movies' => $movies,
-            'title' => 'All films'
+            'movies' => $movies
+//            'title' => 'All films'
         ]);
     }
 
     public function view(Movie $movie){
         return view('movies.card', [
             'movie' => $movie,
-            'title' => $movie->title
+            'title' => $movie->title,
+            'price' => $movie->price,
+            'description' => $movie->description
         ]);
     }
 
@@ -35,6 +38,9 @@ class MoviesController extends Controller
 // добавить Н1 заголовок для всех страниц должен передаваться из контроллера в шаблон
 //  вывести в хедере ссылки на главную страницу и на каталог фильмов
 //  используя метод route()
+
+
+// среда
 // сделать шаблон фильма карточка фильма вывести дескриптион
 // сделать форму поиска
 // сделать фильтр по цене
