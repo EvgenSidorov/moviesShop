@@ -14,9 +14,9 @@
                 Your price: <p class="card-text mx-3">{{number_format($movie->price, 2)}} $</p>
             </div>
             <div class="d-flex mt-5 justify-content-around">
-                <a href="#" class="btn btn-outline-success">+</a>
-                <h5 class="card-text text-center">Count: 1</h5>
                 <a href="#" class="btn btn-outline-danger">-</a>
+                <h5 class="card-text text-center">Count: 1</h5>
+                <a href="#" class="btn btn-outline-success">+</a>
             </div>
             <div class="d-flex mt-5 justify-content-around">
                 <a href="#" class="btn btn-outline-success">Add to Cart</a>
