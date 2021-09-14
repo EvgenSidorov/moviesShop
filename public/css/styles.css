@@ -11273,3 +11273,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.b {
+    border: 1px solid blue;
+}

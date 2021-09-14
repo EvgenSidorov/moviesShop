@@ -21,7 +21,7 @@ class MoviesController extends Controller
     public function view(Movie $movie)
     {
         $this->setTitle($movie->title);
-        $rating = 10;
+        $rating = rand(1, 10);
 
         return view('movies.card', compact('movie', 'rating'));
     }

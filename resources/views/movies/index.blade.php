@@ -4,8 +4,8 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-2 justify-content-center mb-5">
                 <form action="{{route('app.movies.index')}}" method="GET" class="d-flex" >
-                    <input class="form-control" type="text" value="{{request('query')}}" name="query" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success ml-5" type="submit">Search</button>
+                    <input class="form-control mx-2" type="text" value="{{request('query')}}" name="query" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark " type="submit">Search</button>
                 </form>
             </div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
