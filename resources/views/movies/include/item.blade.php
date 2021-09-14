@@ -7,7 +7,8 @@
             <!-- Product name-->
             <h5 class="fw-bolder">{{$movie->title}}</h5>
             <!-- Product price-->
-            {{number_format($movie->price, 2)}}$
+            <p style="color:#f6931f; font-weight:bold;">{{number_format($movie->price, 2)}}$</p>
+{{--            {{number_format($movie->price, 2)}}$--}}
         </div>
     </div>
     <!-- Product actions-->

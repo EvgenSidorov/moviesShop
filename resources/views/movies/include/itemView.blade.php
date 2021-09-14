@@ -10,8 +10,8 @@
             <div class="bg-secondary text-white text-center bold mb-2">Rating: {{$rating}}</div>
             {{$movie->description}}
             </p>
-            <div class="d-flex ">
-                Your price: <p class="card-text mx-3">{{number_format($movie->price, 2)}} $</p>
+            <div class="d-flex " style="">
+                Your price: <p class="card-text mx-3" style="color:#f6931f; font-weight:bold;">{{number_format($movie->price, 2)}} $</p>
             </div>
             <div class="d-flex mt-3 justify-content-around">
                 <a href="#" class="btn btn-outline-danger">-</a>
