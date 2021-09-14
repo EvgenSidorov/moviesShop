@@ -7,6 +7,7 @@ use App\Models\Movie;
 class MoviesController extends Controller
 {
     public function index(){
+
         $movies = Movie::where('is_active', true)
             ->when(request()->has('query'), function($q){
                 return $q->where('title', 'like', '%'.request('query').'%');
@@ -18,6 +19,7 @@ class MoviesController extends Controller
         return view('movies.index', compact('movies'));
     }
 
+
     public function view(Movie $movie)
     {
         $this->setTitle($movie->title);
@@ -25,6 +27,15 @@ class MoviesController extends Controller
 
         return view('movies.card', compact('movie', 'rating'));
     }
+    public function increase()
+    {
+        $movies = Movie::where('is_active', true)
+            ->orderBy('price', 'asc')
+            ->paginate(8);
+
+        return view('movies.index', compact('movies'));
+    }
+
 
 }
 
