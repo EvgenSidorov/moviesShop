@@ -3,23 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
-use App\Models\User;
-use Illuminate\Http\Request;
 
+/**
+ *
+ */
 class HomeController extends Controller
 {
-    public function index(){
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function index()
+    {
         $movies = Movie::query()->inRandomOrder()->limit(8)->get();
-//        dd($movies);
+
         return view('index', [
             'movies' => $movies,
-            'title' => 'Home'
+            'title' => 'Home',
         ]);
     }
 
-    public function about(){
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function about()
+    {
         return view('about', [
-            'title' => 'About'
+            'title' => 'About',
         ]);
     }
 }

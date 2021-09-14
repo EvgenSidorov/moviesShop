@@ -4,22 +4,56 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 
+/**
+ *
+ */
 class MoviesController extends Controller
 {
-    public function index(){
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function index()
+    {
+
+        $request = request()->all();
 
         $movies = Movie::where('is_active', true)
-            ->when(request()->has('query'), function($q){
+            ->when(request()->has('query'), function ($q) {
                 return $q->where('title', 'like', '%'.request('query').'%');
             })
-            ->orderBy('price', 'desc')
-            ->paginate(8);
-//        dd($movies);
+            ->when(isset($request['query']), function ($q) use ($request) {
+                return $q->where('title', 'like', '%'.$request['query'].'%');
+            })
+            ->when(isset($request['sort']), function ($q) use ($request) {
 
-        return view('movies.index', compact('movies'));
+                //?sort=price_desc or sort=price_asc
+                $sort = explode('_', $request['sort']);
+                //$sort[0] это имя сортировки
+                //$sort[1] это направление сортировки (asc|desc)
+
+
+                if (count($sort) === 2) {
+                    return $q->orderBy($sort[0], $sort[1]);
+                }
+
+                return $q;
+            })
+            ->paginate(8);
+
+        $sortItems = [
+            'id' => 'ID',
+            'price' => 'Price',
+        ];
+
+        return view('movies.index', compact('movies', 'sortItems'));
     }
 
 
+    /**
+     * @param  Movie  $movie
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function view(Movie $movie)
     {
         $this->setTitle($movie->title);
