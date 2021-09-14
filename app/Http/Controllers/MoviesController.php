@@ -27,14 +27,6 @@ class MoviesController extends Controller
 
         return view('movies.card', compact('movie', 'rating'));
     }
-    public function increase()
-    {
-        $movies = Movie::where('is_active', true)
-            ->orderBy('price', 'asc')
-            ->paginate(8);
-
-        return view('movies.index', compact('movies'));
-    }
 
 
 }
