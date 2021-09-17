@@ -6,6 +6,7 @@ $(function (){
         //$(this).val() текушее значение из option
         $(this).parents('form').submit();
     });
+
     $( "#slider-range" ).slider({
         range: true,
         min: 0,
