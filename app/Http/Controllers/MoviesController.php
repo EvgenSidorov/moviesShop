@@ -81,3 +81,9 @@ class MoviesController extends Controller
 // как работает метод ->when() в builder
 //удалить таблицу users.
 //выполнить php artisan migrate
+
+//Homework
+//1. Добавить новое поле в таблице movies, поле rating c типом float по умолчанию rating = 0.0
+//2. Добавить новое поле в таблице users, поле phone varchar(30) nullable.
+//3. Сделать страницу регистрации пользователей с на которой будет форма с полями name, email, phone.
+//В этой задаче не забудь про роут и контроллер, советую назвать контроллер UserController.

@@ -23,5 +23,6 @@ class Movie extends Model
         'description',
         'genre',
         'price',
+        'rating',
     ];
 }
