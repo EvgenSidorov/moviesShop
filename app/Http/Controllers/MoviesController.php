@@ -16,14 +16,19 @@ class MoviesController extends Controller
     {
 
         $request = request()->all();
+        $this->setTitle('Movies');
+
+//        dd($request);
 
         $movies = Movie::where('is_active', true)
-            ->when(request()->has('query'), function ($q) {
-                return $q->where('title', 'like', '%'.request('query').'%');
-            })
+//            addSelect(\DB::raw('movies.*, min(price) as minPrice, max(price) as maxPrice'))
             ->when(isset($request['query']), function ($q) use ($request) {
-                return $q->where('title', 'like', '%'.$request['query'].'%');
+                return $q->where('title', 'like', '%' . $request['query'] . '%');
             })
+            ->when(isset($request['price_from']), function ($q) use ($request) {
+                return $q->whereBetween('price', array($request['price_from'], $request['price_to']));
+            })
+
             ->when(isset($request['sort']), function ($q) use ($request) {
 
                 //?sort=price_desc or sort=price_asc

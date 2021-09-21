@@ -5,12 +5,14 @@
         <div class="container px-4 px-lg-5">
             <div class=" justify-content-center">
                 <h1>Форма регистрации пользователя</h1>
+                @include('movies.include.messages')
             </div>
             <div class="d-flex mt-5">
                 <img src="https://vseoshokolade.ru/wp-content/uploads/2020/10/2245941.jpg" class="" style="width: 60%"
                      alt="">
                 {{--            </div>--}}
-                <form action="" class="mx-4" method="post">
+                <form action="{{ route('app.signUpSubmit') }}" class="mx-4" method="post">
+                    @csrf
                     <div class="container d-flex">
                         <div class="row">
                             <div class="mt-3">
@@ -25,12 +27,15 @@
                                 <label for="exampleDataList" class="form-label">phone</label>
                                 <input class="form-control" name="phone" id="exampleDataList" >
                             </div>
+                            <div class="mt-3">
+                                <label for="exampleDataList" class="form-label">password</label>
+                                <input class="form-control" name="password" id="exampleDataList" >
+                            </div>
                         </div>
                     </div>
                     <div class="container d-flex mt-5">
                         <div style="">
-                            <button type="button" id="submitButton" class="btn btn-outline-dark">Add User</button>
-
+                            <button type="submit" id="submitButton" class="btn btn-outline-dark">Add User</button>
                         </div>
                     </div>
                 </form>
