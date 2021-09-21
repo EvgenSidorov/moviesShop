@@ -17,19 +17,23 @@
                         <div class="row">
                             <div class="mt-3">
                                 <label for="exampleDataList" class="form-label">name</label>
-                                <input class="form-control" name="name" id="exampleDataList">
+                                <input class="form-control" name="name" value="{{ old('name') }}" id="exampleDataList">
                             </div>
                             <div class="mt-3">
                                 <label for="exampleDataList" class="form-label">email</label>
-                                <input class="form-control" name="email" id="exampleDataList" >
+                                <input class="form-control" name="email" value="{{ old('email') }}"id="exampleDataList" >
                             </div>
                             <div class="mt-3">
                                 <label for="exampleDataList" class="form-label">phone</label>
-                                <input class="form-control" name="phone" id="exampleDataList" >
+                                <input class="form-control" name="phone" value="{{ old('phone') }}" id="exampleDataList" >
                             </div>
                             <div class="mt-3">
                                 <label for="exampleDataList" class="form-label">password</label>
-                                <input class="form-control" name="password" id="exampleDataList" >
+                                <input class="form-control" name="password" value="{{ old('password') }}" type="password" id="exampleDataList" >
+                            </div>
+                            <div class="mt-3">
+                                <label for="exampleDataList" class="form-label">confirm password</label>
+                                <input class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" type="password" id="exampleDataList" >
                             </div>
                         </div>
                     </div>
