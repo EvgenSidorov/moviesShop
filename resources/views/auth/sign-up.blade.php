@@ -5,15 +5,7 @@
         <div class="container px-4 px-lg-5">
             <div class=" justify-content-center">
                 <h1>Форма регистрации пользователя</h1>
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                @include('movies.include.messages')
             </div>
             <div class="d-flex mt-5">
                 <img src="https://vseoshokolade.ru/wp-content/uploads/2020/10/2245941.jpg" class="" style="width: 60%"

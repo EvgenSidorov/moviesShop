@@ -20,6 +20,6 @@ class UserController extends Controller
         $user->phone = $req->input('phone');
         $user->password = $req->input('password');
         $user->save();
-        return redirect()->route('app.home');
+        return redirect()->route('app.home')->with('success', 'User is sign up');
     }
 }

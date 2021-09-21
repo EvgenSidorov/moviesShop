@@ -6,6 +6,7 @@
 @if(!request()->routeIs('app.home'))
 {{--    <h1>{{ $title??'title' }}</h1>--}}
 @endif
+@include('movies.include.messages')
 @yield('content')
 @include('layout.footer')
 </body>
