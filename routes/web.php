@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('app.home');
 Route::get('/about', 'HomeController@about')->name('app.about');
-Route::get('/signIn', 'UserController@index')->name('app.signIn');
+Route::get('/signUp', 'UserController@signUp')->name('app.signUp');
 Route::get('/movies', 'MoviesController@index')->name('app.movies.index');
 Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');

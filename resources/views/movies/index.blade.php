@@ -11,16 +11,10 @@
                 </form>
             </div>
 
-            <div class="row mt-5">
-                <div class="col-md-6">
-                    <p>
-                        <label for="amount">Price range:</label>
-                        <input type="text" id="amount" name="price" readonly
-                               style="border:0; color:#f6931f; font-weight:bold;">
-                    </p>
-                    <div id="slider-range" class="mb-4 w-25"></div>
-                </div>
-                <div class="col-md-6">
+            <div class="row m-5">
+                <div class="col-md-3"></div>
+                <div class="col-md-7"><h1>{{ $title }}</h1></div>
+                <div class="col-md-2">
                     <form action="{{route('app.movies.index', request()->toArray())}}" method="GET">
                         @if(request()->has('query'))
                             <input type="hidden" name="query" value="{{request('query')}}"/>
@@ -32,7 +26,7 @@
                                 <option value="{{$key}}_desc">{{$sortItem}}: DESC</option>
                             @endforeach
                         </select>
-{{--                            <a href="{{route('app.movies.index', request()->merge(['sort' => 'price_asc'])->toArray())}}">PRICE: ASC</a>--}}
+                        {{--                            <a href="{{route('app.movies.index', request()->merge(['sort' => 'price_asc'])->toArray())}}">PRICE: ASC</a>--}}
 
                         {{--                    @foreach($sortItems as $key => $sortItem)--}}
                         {{--                        <a href="{{route('app.movies.index', request()->merge(['sort' => $key.'_asc'])->toArray())}}">{{$sortItem}}: ASC</a>--}}
@@ -42,14 +36,42 @@
                     </form>
                 </div>
             </div>
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                @foreach($movies as $movie)
-                    <div class="col mb-5">
-                        @include('movies.include.item', ['movie' => $movie])
+            <div class="container">
+                <div class="row justify-content-center mt-2">
+                    <div class="col col-lg-3">
+
+                        <div class="">
+                            <form action="{{route('app.movies.index', request()->toArray())}}" name="filterPrice" class="filterForm" method="GET">
+                            <p>
+                                <label for="amount">Price range:</label>
+                                <div class="d-flex">$
+                                    <input type="text" id="amount" readonly name="price_from" value="0"
+                                           style="border: 0; color:#f6931f; font-weight:bold;">
+                                    <input type="text"  name="price_to" value="100"
+                                           style="border: 0; color:#f6931f; font-weight:bold;">$
+                                </div>
+
+
+                            </p>
+                            <div id="slider-range" class="mb-4"></div>
+                                <button class="btn btn-primary">Filter</button>
+                            </form>
+                        </div>
                     </div>
-                @endforeach
-                {{ $movies->links() }}
+                    <div class="col col-lg-9 d-flex">
+                        <div class="row">
+                            @foreach($movies as $movie)
+                                <div class="col col-sm-3 mb-5">
+                                    @include('movies.include.item', ['movie' => $movie])
+                                </div>
+                            @endforeach
+                            {{ $movies->links() }}
+                        </div>
+
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 @endsection
