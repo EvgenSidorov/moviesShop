@@ -12,8 +12,6 @@ class UserController extends Controller
     {
         $user = User::all();
 
-        dd($user->pluck('email_verified_at'));
-
         return view('auth.sign-up');
     }
 
