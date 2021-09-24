@@ -21,6 +21,7 @@
                         @endif
                         <label><b>Sorting:</b></label>
                         <select name="sort" class="form-control sortForm">
+                            <option value=""></option>
                             @foreach($sortItems as $key => $sortItem)
                                 <option value="{{$key}}_asc">{{$sortItem}}: ASC</option>
                                 <option value="{{$key}}_desc">{{$sortItem}}: DESC</option>
@@ -45,13 +46,11 @@
                             <p>
                                 <label for="amount">Price range:</label>
                                 <div class="d-flex">$
-                                    <input type="text" id="amount" readonly name="price_from" value="0"
-                                           style="border: 0; color:#f6931f; font-weight:bold;">
-                                    <input type="text"  name="price_to" value="100"
+                                    <input type="text" id="amount" readonly name="price_from" @if(isset($_GET['price_from'])) value="{{ $_GET['price_from'] }}" @endif value="0"
                                            style="border: 0; color:#f6931f; font-weight:bold;">$
+                                    <input type="text"  name="price_to"  @if(isset($_GET['price_to'])) value="{{ $_GET['price_to'] }}" @endif value="100"
+                                           style="border: 0; color:#f6931f; font-weight:bold;">
                                 </div>
-
-
                             </p>
                             <div id="slider-range" class="mb-4"></div>
                                 <button class="btn btn-primary">Filter</button>
@@ -65,7 +64,7 @@
                                     @include('movies.include.item', ['movie' => $movie])
                                 </div>
                             @endforeach
-                            {{ $movies->links() }}
+                            {{ $movies->withQueryString()->links() }}
                         </div>
 
                     </div>
