@@ -19,3 +19,7 @@ Route::get('/signUp', 'UserController@signUp')->name('app.signUp');
 Route::post('/signUp/submit', 'UserController@signUpSubmit')->name('app.signUpSubmit');
 Route::get('/movies', 'MoviesController@index')->name('app.movies.index');
 Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');
+
+Route::group(['prefix' => 'debug', 'as' => 'app.debug.'], function(){
+    Route::get('/', 'DebugController@debug')->name('debug');
+});
