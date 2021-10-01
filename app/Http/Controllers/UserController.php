@@ -23,9 +23,10 @@ class UserController extends Controller
         return view('auth.sign-in');
     }
 
-//    public function logout(){
-//
-//    }
+    public function logout(){
+        Auth::logout();
+        return redirect(route('app.home'));
+    }
 
 
     public function signUpSubmit(Request $request)
@@ -50,21 +51,27 @@ class UserController extends Controller
     public function signInSubmit(Request $request)
     {
 
-         $this->validate($request, [
-            'email' => 'email:rfc,dns|exists:users,email',
-            'password' => 'required',
-        ]);
-
-        $user = User::firstWhere('email', $request->get('email'));
+//         $this->validate($request, [
+//            'email' => 'email:rfc,dns|exists:users,email',
+//            'password' => 'required',
+//        ]);
+//
+//        $user = User::firstWhere('email', $request->get('email'));
 //        dd($user);
 
-        if($user){
-            Auth::attempt($user);
-            return redirect(route('app.home'));
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('app.home'));
         }
-        return redirect(route('app.signInSubmit'))->whithErrors([
-            'form-error' => 'Произошла ошибка авторизации'
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
         ]);
+
 //        $user = User::firstWhere('email', $request->get('email'));
 
 //        dd($user);
