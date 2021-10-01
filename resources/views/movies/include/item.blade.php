@@ -1,4 +1,5 @@
 <div class="card h-100">
+{{--    @dd($movie)--}}
     <!-- Product image-->
     <img class="card-img-top" src="https://vseoshokolade.ru/wp-content/uploads/2020/10/2245941.jpg" alt="{{$movie->title}}"/>
     <!-- Product details-->
