@@ -23,3 +23,10 @@ Route::post('/signIn/submit', 'UserController@signInSubmit')->name('app.signInSu
 Route::get('/logout', 'UserController@logout')->name('app.logout');
 Route::get('/movies', 'MoviesController@index')->name('app.movies.index');
 Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');
+Route::group([
+    'prefix' => '/basket',
+    'name' => 'app.basket.'
+], function(){
+    Route::post('/add/{movie}', 'BasketController@add')->name('add');
+    Route::post('/remove/{movie}', 'BasketController@remove')->name('remove');
+});
