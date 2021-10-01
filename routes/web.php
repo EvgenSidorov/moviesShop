@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +20,9 @@ Route::get('/signUp', 'UserController@signUp')->name('app.signUp');
 Route::get('/signIn', 'UserController@signIn')->name('app.signIn');
 Route::post('/signUp/submit', 'UserController@signUpSubmit')->name('app.signUpSubmit');
 Route::post('/signIn/submit', 'UserController@signInSubmit')->name('app.signInSubmit');
+Route::get('/logout', function(){
+    Auth::logout();
+    return redirect(route('/'));
+})->name('logout');
 Route::get('/movies', 'MoviesController@index')->name('app.movies.index');
 Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');

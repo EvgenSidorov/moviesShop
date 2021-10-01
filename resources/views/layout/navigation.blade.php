@@ -18,10 +18,17 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('app.signUp') }}">Sign up</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('app.signIn') }}">Sign in</a></li>
-                </ul>
+{{--                @if(auth()->check())--}}
+{{--                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">--}}
+{{--                        <li class="nav-item"><a class="nav-link" href="/">LLLLLLL</a></li>--}}
+{{--                        <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Log out</a></li>--}}
+{{--                    </ul>--}}
+{{--                @else--}}
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('app.signUp') }}">Sign up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('app.signIn') }}">Sign in</a></li>
+                    </ul>
+{{--                @endif--}}
                 <button class="btn btn-outline-dark mx-3">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
