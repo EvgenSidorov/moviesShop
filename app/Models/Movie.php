@@ -28,7 +28,11 @@ class Movie extends Model
         'rating',
     ];
 
-    public function scopeFilter(Builder $builder, QueryFilter $filter){
-        return $filter->apply($builder);
+    public function scopeFilter(Builder $query, QueryFilter $filter){
+        return $filter->apply($query);
+    }
+
+    public function scopeById(Builder $query, $id){
+        return $query->where('id', $id);
     }
 }

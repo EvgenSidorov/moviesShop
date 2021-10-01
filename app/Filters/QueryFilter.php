@@ -5,7 +5,7 @@ namespace App\Filters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class QueryFilter
+ abstract class QueryFilter
 {
     public $request;
     protected $builder;
@@ -24,7 +24,7 @@ class QueryFilter
     public function apply(Builder $builder)
     {
         $this->builder = $builder;
-
+//        dd($this->filters());
         foreach ($this->filters() as $name => $value) {
             if (method_exists($this, $name)) {
                 call_user_func_array([$this, $name], array_filter([$value]));

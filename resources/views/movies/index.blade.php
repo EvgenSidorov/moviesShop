@@ -15,7 +15,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-7"><h1>{{ $title }}</h1></div>
                 <div class="col-md-2">
-                    <form action="{{route('app.movies.index', request()->toArray())}}" method="GET">
+                    <form action="{{route('app.movies.index', request()->toArray())}}"  name="sortForm" method="GET">
                         @if(request()->has('query'))
                             <input type="hidden" name="query" value="{{request('query')}}"/>
                         @endif
@@ -40,22 +40,48 @@
             <div class="container">
                 <div class="row justify-content-center mt-2">
                     <div class="col col-lg-3">
-
                         <div class="">
-                            <form action="{{route('app.movies.index', request()->toArray())}}" name="filterPrice" class="filterForm" method="GET">
-                            <p>
-                                <label for="amount">Price range:</label>
+                            <form action="{{route('app.movies.index', request()->toArray())}}" name="filterPrice"
+                                  class="filterForm" method="GET">
+                                @if(request()->has('query'))
+                                    <input type="hidden" name="query" value="{{request('query')}}"/>
+                                @endif
+                                <p>
+                                    <label for="amount">Price range:</label>
                                 <div class="d-flex">$
-                                    <input type="text" id="amount" readonly name="price_from" @if(isset($_GET['price_from'])) value="{{ $_GET['price_from'] }}" @endif value="0"
+                                    <input type="text" id="amount" readonly name="price_from"
+                                           @if(isset($_GET['price_from'])) value="{{ $_GET['price_from'] }}"
+                                           @endif value="0"
                                            style="border: 0; color:#f6931f; font-weight:bold;">$
-                                    <input type="text"  name="price_to"  @if(isset($_GET['price_to'])) value="{{ $_GET['price_to'] }}" @endif value="100"
+                                    <input type="text" name="price_to"
+                                           @if(isset($_GET['price_to'])) value="{{ $_GET['price_to'] }}"
+                                           @endif value="100"
                                            style="border: 0; color:#f6931f; font-weight:bold;">
                                 </div>
-                            </p>
-                            <div id="slider-range" class="mb-4"></div>
+                                </p>
+                                <div id="slider-range" class="mb-5"></div>
+                                    @if(request()->has('query'))
+                                    <input type="hidden" name="query" value="{{request('query')}}"/>
+                                @endif
+                                <p>
+                                    <label for="amount2">Rating range:</label>
+                                <div class="d-flex">
+                                    <input type="text" id="amount2" readonly name="rating_from"
+                                           @if(isset($_GET['rating_from'])) value="{{ $_GET['rating_from'] }}"
+                                           @endif value="0"
+                                           style="border: 0; color:#f6931f; font-weight:bold;">
+                                    <input type="text" name="rating_to"
+                                           @if(isset($_GET['rating_to'])) value="{{ $_GET['rating_to'] }}"
+                                           @endif value="10"
+                                           style="border: 0; color:#f6931f; font-weight:bold;">
+                                </div>
+                                </p>
+                                <div id="slider2-range" class="mb-4"></div>
+
                                 <button class="btn btn-primary">Filter</button>
                             </form>
                         </div>
+
                     </div>
                     <div class="col col-lg-9 d-flex">
                         <div class="row">

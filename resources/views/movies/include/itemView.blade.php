@@ -11,7 +11,7 @@
             <h4 class="card-title align-self-center">{{$movie->title}}</h4>
         </div>
         <p class="card-text ">
-        <div class="bg-secondary text-white text-center bold mb-2">Rating: {{$rating}}</div>
+        <div class="bg-secondary text-white text-center bold mb-2">Rating: {{$movie->rating}}</div>
         {{$movie->description}}
         </p>
         <div class="d-flex " style="">
