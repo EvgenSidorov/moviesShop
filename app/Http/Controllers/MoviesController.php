@@ -25,7 +25,9 @@ class MoviesController extends Controller
         $sortItems = [
             'id' => 'ID',
             'price' => 'Price',
+            'rating' => 'Rating'
         ];
+
 
         return view('movies.index', compact('movies', 'sortItems'));
     }

@@ -9,7 +9,7 @@
             <h5 class="fw-bolder">{{$movie->title}}</h5>
             <!-- Product price-->
             <p style="color:#f6931f; font-weight:bold;">{{number_format($movie->price, 2)}}$</p>
-{{--            <p >Raiting: {{$movie->rating}}</p>--}}
+            <p >Raiting: {{$movie->rating}}</p>
 {{--            {{number_format($movie->price, 2)}}$--}}
         </div>
     </div>
