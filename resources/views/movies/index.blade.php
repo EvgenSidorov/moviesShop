@@ -39,7 +39,7 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center mt-2">
-                    <div class="col col-lg-3">
+                    <div class="col col-lg-2">
                         <div class="">
                             <form action="{{route('app.movies.index', request()->toArray())}}" name="filterPrice"
                                   class="filterForm" method="GET">
@@ -49,10 +49,10 @@
                                 <p>
                                     <label for="amount">Price range:</label>
                                 <div class="d-flex">$
-                                    <input type="text" id="amount" readonly name="price_from"
+                                    <input type="text" id="amount" readonly name="price_from" class=""
                                            @if(isset($_GET['price_from'])) value="{{ $_GET['price_from'] }}"
                                            @endif value="0"
-                                           style="border: 0; color:#f6931f; font-weight:bold;">$
+                                           style="border: 0; color:#f6931f; font-weight:bold; width: 130px;">$
                                     <input type="text" name="price_to"
                                            @if(isset($_GET['price_to'])) value="{{ $_GET['price_to'] }}"
                                            @endif value="100"
@@ -69,7 +69,7 @@
                                     <input type="text" id="amount2" readonly name="rating_from"
                                            @if(isset($_GET['rating_from'])) value="{{ $_GET['rating_from'] }}"
                                            @endif value="0"
-                                           style="border: 0; color:#f6931f; font-weight:bold;">
+                                           style="border: 0; color:#f6931f; font-weight:bold; width: 160px;">
                                     <input type="text" name="rating_to"
                                            @if(isset($_GET['rating_to'])) value="{{ $_GET['rating_to'] }}"
                                            @endif value="10"
@@ -83,7 +83,7 @@
                         </div>
 
                     </div>
-                    <div class="col col-lg-9 d-flex">
+                    <div class="col col-lg-10 d-flex">
                         <div class="row">
                             @foreach($movies as $movie)
                                 <div class="col col-sm-3 mb-5">
