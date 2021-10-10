@@ -30,7 +30,32 @@ $(function (){
             $('.filterForm input[name="rating_from"]').val(ui.values[0]);
             $('.filterForm input[name="rating_to"]').val(ui.values[1]);
         }
+
     });
+
+
+
+    $('.plus').on('click', function (){
+        let count = $('.count').text(),
+            price = $('.moviePrice').text(),
+            newCount = ++count;
+        $('.count').html(newCount);
+        $('.countTotal').html(count * price);
+
+    });
+
+    $('.minus').on('click', function (){
+        let count = $('.count').text(),
+            price = $('.moviePrice').text(),
+            newCount = count - 1;
+        if(count == 1) return 1;
+        $('.count').html(newCount);
+        $('.countTotal').html(newCount * price);
+
+    });
+
+
+
 
     // $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
     //     " - $" + $( "#slider-range" ).slider( "values", 1 ) );

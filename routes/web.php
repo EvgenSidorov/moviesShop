@@ -25,8 +25,9 @@ Route::get('/movies', 'MoviesController@index')->name('app.movies.index');
 Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');
 Route::group([
     'prefix' => '/basket',
-    'name' => 'app.basket.'
+    'as' => 'app.basket.'
 ], function(){
-    Route::post('/add/{movie}', 'BasketController@add')->name('add');
-    Route::post('/remove/{movie}', 'BasketController@remove')->name('remove');
+    Route::get('', 'BasketController@index')->name('index');
+    Route::get('/add/{movie}', 'BasketController@add')->name('add');
+    Route::get('/remove/{movie}', 'BasketController@remove')->name('remove');
 });
