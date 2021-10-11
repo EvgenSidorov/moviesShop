@@ -3,7 +3,7 @@
     <!-- Product image-->
     <img class="card-img-top" src="https://vseoshokolade.ru/wp-content/uploads/2020/10/2245941.jpg" alt="{{$movie->title}}"/>
     <!-- Product details-->
-    <div class="card-body p-2">
+    <div class="card-body p-1">
         <div class="text-center">
             <!-- Product name-->
             <h5 class="fw-bolder">{{$movie->title}}</h5>
@@ -13,11 +13,11 @@
         </div>
     </div>
     <!-- Product actions-->
-    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+    <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
         <div class="text-center">
-            <a class="btn btn-outline-dark mt-auto"
+            <a class="btn btn-outline-dark"
                href="{{ route('app.movies.view', ['movie'=> $movie]) }}">View</a>
-            <a class="btn btn-outline-dark mt-auto"
+            <a class="btn btn-outline-dark"
                href="{{ route('app.basket.add', ['movie'=> $movie]) }}">To cart</a>
         </div>
     </div>

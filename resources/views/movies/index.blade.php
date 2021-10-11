@@ -1,20 +1,27 @@
 @extends('layout.aria')
 @section('content')
-    <section class="mt-3">
+    <section class="mt-2">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-2 justify-content-center">
-                <form action="{{route('app.movies.index', request()->toArray())}}" name="queryForm" method="GET"
-                      class="d-flex">
-                    <input class="form-control mx-2" type="text" value="{{request('query')}}" name="query"
-                           placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-dark " type="submit">Search</button>
-                </form>
-            </div>
+{{--            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-2 justify-content-center">--}}
+{{--                <form action="{{route('app.movies.index', request()->toArray())}}" name="queryForm" method="GET"--}}
+{{--                      class="d-flex">--}}
+{{--                    <input class="form-control mx-2" type="text" value="{{request('query')}}" name="query"--}}
+{{--                           placeholder="Search" aria-label="Search">--}}
+{{--                    <button class="btn btn-outline-dark " type="submit">Search</button>--}}
+{{--                </form>--}}
+{{--            </div>--}}
 
-            <div class="row m-5">
-                <div class="col-md-3"></div>
-                <div class="col-md-7"><h1>{{ $title }}</h1></div>
-                <div class="col-md-2">
+            <div class="row mx-5">
+                <div class="col-md-3"><h1>{{ $title }}</h1></div>
+                <div class="col-md-6">
+                    <form action="{{route('app.movies.index', request()->toArray())}}" name="queryForm" method="GET"
+                          class="d-flex">
+                        <input class="form-control mx-2" type="text" value="{{request('query')}}" name="query"
+                               placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-dark " type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="offset-1 col-md-2">
                     <form action="{{route('app.movies.index', request()->toArray())}}"  name="sortForm" method="GET">
                         @if(request()->has('query'))
                             <input type="hidden" name="query" value="{{request('query')}}"/>
@@ -27,13 +34,6 @@
                                 <option value="{{$key}}_desc">{{$sortItem}}: DESC</option>
                             @endforeach
                         </select>
-                        {{--                            <a href="{{route('app.movies.index', request()->merge(['sort' => 'price_asc'])->toArray())}}">PRICE: ASC</a>--}}
-
-                        {{--                    @foreach($sortItems as $key => $sortItem)--}}
-                        {{--                        <a href="{{route('app.movies.index', request()->merge(['sort' => $key.'_asc'])->toArray())}}">{{$sortItem}}: ASC</a>--}}
-                        {{--                        <a href="{{route('app.movies.index', request()->merge(['sort' => $key.'_desc'])->toArray())}}">{{$sortItem}}: DESC</a>--}}
-                        {{--                    @endforeach--}}
-
                     </form>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                     <div class="col col-lg-10 d-flex">
                         <div class="row">
                             @foreach($movies as $movie)
-                                <div class="col col-sm-3 mb-5">
+                                <div class="col col-sm-3 mb-4">
                                     @include('movies.include.item', ['movie' => $movie])
                                 </div>
                             @endforeach
