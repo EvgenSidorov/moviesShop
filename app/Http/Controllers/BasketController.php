@@ -42,7 +42,6 @@ class BasketController extends Controller
 
     public function remove(Movie $movie)
     {
-
         $movies = $this->getBasket();
         $basketItem = [
             'id' => $movie->id,
@@ -52,11 +51,22 @@ class BasketController extends Controller
         ];
         $newMovies = [];
         foreach ($movies as $item) {
+            if (($item['id'] == $basketItem['id']) && $item['count'] > 1) {
+                $item['count']--;
+                $newMovies[] = $item;
+            }
             if (!($item['id'] == $basketItem['id'])) {
                 $newMovies[] = $item;
             }
         }
         $this->saveToBasket($newMovies);
+        return redirect()->route('app.basket.index');
+    }
+
+    public function removeAll ()
+    {
+        $movies = [];
+        $this->saveToBasket($movies);
         return redirect()->route('app.basket.index');
     }
 

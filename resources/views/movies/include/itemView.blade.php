@@ -24,7 +24,7 @@
             <a href="#" class="btn btn-outline-success">+</a>
         </div>
         <div class="d-flex mt-3 justify-content-around">
-            <a href="#" class="btn btn-outline-success">Add to Cart</a>
+            <a href="{{ route('app.basket.add', ['movie'=> $movie]) }}" class="btn btn-outline-success">Add to Cart</a>
         </div>
 
     </div>

@@ -7,10 +7,12 @@
             </div>
             @each('movies.include.itemInCart', $movies, 'movie')
             <div class="row">
-            <div class="col-8">
-                <div class="d-flex m-5">
+                <div class="col mt-5 d-flex justify-content-around">
                     <a href="{{ route('app.movies.index') }}" class="btn btn-outline-dark mx-2"><-Back</a>
                     <a href="{{ route('app.movies.index') }}" class="btn btn-outline-dark">Buy-></a>
+                </div>
+                <div class="col mt-5 d-flex justify-content-center">
+                    <a href="{{ route('app.basket.removeAll') }}" class="btn btn-danger">DELETE ALL</a>
                 </div>
             </div>
         </div>

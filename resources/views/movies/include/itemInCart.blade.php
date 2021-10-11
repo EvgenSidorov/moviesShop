@@ -34,7 +34,6 @@
     <div class="col-2 mt-2">
         <div class="d-flex mt-3 justify-content-around">
             <a class="btn btn-danger mt-auto"
-{{--               href="#">DELETE</a>--}}
                href="{{ route('app.basket.remove', $movie['id']) }}">DELETE</a>
         </div>
     </div>
