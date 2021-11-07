@@ -27,11 +27,11 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('app.signIn') }}">Sign in</a></li>
                         @endif
                     </ul>
-                <button class="btn btn-outline-dark mx-3">
+                <a href="{{ route('app.basket.index') }}" class="btn btn-outline-dark mx-3 cartBtn">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{ $countBasket }}</span>
+                </a>
             </div>
         </div>
     </div>

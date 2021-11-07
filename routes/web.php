@@ -28,7 +28,7 @@ Route::group([
     'as' => 'app.basket.'
 ], function(){
     Route::get('', 'BasketController@index')->name('index');
-    Route::get('/add/{movie}', 'BasketController@add')->name('add');
+    Route::post('/add/{movie}', 'BasketController@add')->name('add');
     Route::get('/remove/{movie}', 'BasketController@remove')->name('remove');
     Route::get('/remove', 'BasketController@removeAll')->name('removeAll');
 });

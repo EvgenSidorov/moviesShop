@@ -11,27 +11,26 @@ class BasketController extends Controller
     {
         $movies = $this->getBasket();
         $addNewMovies = true;
-        $newMovies = [];
         $basketItem = [
             'id' => $movie->id,
             'count' => 1,
             'title' => $movie->title,
-            'price' => $movie->price
+            'price' => $movie->price,
+            'totalPrice' => $movie->price
         ];
-
-        foreach ($movies as $item) {
+        foreach ($movies as $key => $item) {
             if (($item['id'] == $basketItem['id'])) {
-                $item['count']++;
+                $movies[$key]['count']++;
+                $movies[$key]['totalPrice'] = $movies[$key]['count'] * $movies[$key]['price'];
                 $addNewMovies = false;
             }
-            $newMovies[] = $item;
         }
-        $movies[] = $basketItem;
+        if ($addNewMovies) {
+            $movies[] = $basketItem;
+        }
         $this->saveToBasket($movies);
-        if (!$addNewMovies) {
-            $this->saveToBasket($newMovies);
-        }
-        return redirect()->route('app.basket.index');
+//        return redirect()->route('app.basket.index');
+        return response()->json(['success' => true, 'countBasket' => $this->getBasketCount()]);
     }
 
     public function index()
@@ -43,44 +42,33 @@ class BasketController extends Controller
     public function remove(Movie $movie)
     {
         $movies = $this->getBasket();
-        $basketItem = [
-            'id' => $movie->id,
-            'count' => 1,
-            'title' => $movie->title,
-            'price' => $movie->price
-        ];
-        $newMovies = [];
-        foreach ($movies as $item) {
-            if (($item['id'] == $basketItem['id']) && $item['count'] > 1) {
-                $item['count']--;
-                $newMovies[] = $item;
+//        dd($movies);
+
+//        переделать
+        foreach ($movies as $key => $item) {
+            if($item['id'] == $movie->id) {
+                if ($item['count'] > 1) {
+                    $movies[$key]['count']--;
+                    $movies[$key]['totalPrice'] = $movies[$key]['count'] * $movies[$key]['price'];
+                } elseif ($item['count'] == 1) {
+                    unset($movies[$key]);
+                }
             }
-            if (!($item['id'] == $basketItem['id'])) {
-                $newMovies[] = $item;
-            }
+
         }
-        $this->saveToBasket($newMovies);
+        $this->saveToBasket($movies);
         return redirect()->route('app.basket.index');
     }
 
     public function removeAll ()
     {
-        $movies = [];
-        $this->saveToBasket($movies);
-        return redirect()->route('app.basket.index');
+        $this->saveToBasket([]);
+        return redirect()->route('app.movies.index');
     }
 
     public function makeOrder()
     {
     }
 
-    private function saveToBasket($items)
-    {
-        session()->put('basket', $items);
-    }
 
-    private function getBasket()
-    {
-        return session('basket', []);
-    }
 }

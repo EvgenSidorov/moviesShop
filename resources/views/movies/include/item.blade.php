@@ -17,7 +17,7 @@
         <div class="text-center">
             <a class="btn btn-outline-dark"
                href="{{ route('app.movies.view', ['movie'=> $movie]) }}">View</a>
-            <a class="btn btn-outline-dark"
+            <a class="btn btn-outline-dark addToBasket"
                href="{{ route('app.basket.add', ['movie'=> $movie]) }}">To cart</a>
         </div>
     </div>
