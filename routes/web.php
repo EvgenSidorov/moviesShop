@@ -24,6 +24,7 @@ Route::get('/logout', 'UserController@logout')->name('app.logout');
 Route::get('/movies', 'MoviesController@index')->name('app.movies.index');
 Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');
 
+
 Route::get('/order', 'OrderController@index')->name('app.order')->middleware('auth');
 
 Route::group([
@@ -34,4 +35,8 @@ Route::group([
     Route::post('/add/{movie}', 'BasketController@add')->name('add');
     Route::get('/remove/{movie}', 'BasketController@remove')->name('remove');
     Route::get('/remove', 'BasketController@removeAll')->name('removeAll');
+});
+Route::group(['prefix' => 'debug', 'as' => 'app.debug.'], function(){
+    Route::get('/', 'DebugController@debug')->name('debug');
+
 });

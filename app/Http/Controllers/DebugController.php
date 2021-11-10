@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers;
+
+
+/**
+ *
+ */
+class DebugController extends Controller
+{
+    public function debug()
+    {
+
+    }
+}
