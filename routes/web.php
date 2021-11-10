@@ -23,6 +23,9 @@ Route::post('/signIn/submit', 'UserController@signInSubmit')->name('app.signInSu
 Route::get('/logout', 'UserController@logout')->name('app.logout');
 Route::get('/movies', 'MoviesController@index')->name('app.movies.index');
 Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');
+
+Route::get('/order', 'OrderController@index')->name('app.order')->middleware('auth');
+
 Route::group([
     'prefix' => '/basket',
     'as' => 'app.basket.'
