@@ -18,15 +18,20 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('app.signUp') }}">Sign up</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/">Sign in</a></li>
-                </ul>
-                <button class="btn btn-outline-dark mx-3">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        @if(auth()->check())
+                        <li class="nav-item"><a class="nav-link" href="/">{{ auth()->user()->email }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('app.logout') }}">Log out</a></li>
+                        @else
+                        <li class="nav-item"><a class="nav-link" href="{{ route('app.signUp') }}">Sign up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('app.signIn') }}">Sign in</a></li>
+                        @endif
+                    </ul>
+                <a href="{{ route('app.basket.index') }}" class="btn btn-outline-dark mx-3 cartBtn">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{ $countBasket }}</span>
+                </a>
             </div>
         </div>
     </div>

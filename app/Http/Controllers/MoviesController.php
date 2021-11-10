@@ -20,35 +20,14 @@ class MoviesController extends Controller
         $this->setTitle('Movies');
         $movies = Movie::filter($filtr)->paginate(8);
 
-//        $movies = Movie::where('is_active', true)
-//            addSelect(\DB::raw('movies.*, min(price) as minPrice, max(price) as maxPrice'))
-//            ->when(isset($request['query']), function ($q) use ($request) {
-//                return $q->where('title', 'like', '%' . $request['query'] . '%');
-//            })
-//            ->when(isset($request['price_from']), function ($q) use ($request) {
-//                return $q->whereBetween('price', array($request['price_from'], $request['price_to']));
-//            })
 
-//            ->when(isset($request['sort']), function ($q) use ($request) {
-
-                //?sort=price_desc or sort=price_asc
-//                $sort = explode('_', $request['sort']);
-                //$sort[0] это имя сортировки
-                //$sort[1] это направление сортировки (asc|desc)
-
-
-//                if (count($sort) === 2) {
-//                    return $q->orderBy($sort[0], $sort[1]);
-//                }
-//
-//                return $q;
-//            })
-//            ->paginate(8);
 
         $sortItems = [
             'id' => 'ID',
             'price' => 'Price',
+            'rating' => 'Rating'
         ];
+
 
         return view('movies.index', compact('movies', 'sortItems'));
     }

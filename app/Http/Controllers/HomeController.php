@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $movies = Movie::query()->inRandomOrder()->limit(8)->get();
+        $movies = Movie::limit(8)->get();
 
         return view('index', [
             'movies' => $movies,

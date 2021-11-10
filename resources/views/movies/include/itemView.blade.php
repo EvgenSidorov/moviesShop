@@ -10,8 +10,8 @@
         <div class=" d-flex m-1 justify-content-center" style="min-height: 70px;">
             <h4 class="card-title align-self-center">{{$movie->title}}</h4>
         </div>
-        <p class="card-text ">
-        <div class="bg-secondary text-white text-center bold mb-2">Rating: {{$rating}}</div>
+        <p class="card-text">
+        <div class="bg-secondary text-white text-center bold mb-2">Rating: {{$movie->rating}}</div>
         {{$movie->description}}
         </p>
         <div class="d-flex " style="">
@@ -24,7 +24,7 @@
             <a href="#" class="btn btn-outline-success">+</a>
         </div>
         <div class="d-flex mt-3 justify-content-around">
-            <a href="#" class="btn btn-outline-success">Add to Cart</a>
+            <a href="{{ route('app.basket.add', ['movie'=> $movie]) }}" class="btn btn-outline-success">Add to Cart</a>
         </div>
 
     </div>
@@ -32,7 +32,6 @@
 <div class="row">
     <div class="col-8">
         <div class="d-flex m-5">
-
             <a href="{{ route('app.movies.index') }}" class="btn btn-outline-dark"><-Back</a>
         </div>
     </div>
