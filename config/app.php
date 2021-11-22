@@ -123,6 +123,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'deliverySum' => 100,
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -230,5 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
+
 
 ];

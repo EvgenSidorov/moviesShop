@@ -26,6 +26,7 @@ Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');
 
 
 Route::get('/order', 'OrderController@index')->name('app.order')->middleware('auth');
+Route::post('/order', 'OrderController@store')->name('app.order.store')->middleware('auth');
 
 Route::group([
     'prefix' => '/basket',

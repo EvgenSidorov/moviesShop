@@ -24,8 +24,28 @@ class Order extends Model
     const DELIVERY_SHIPPING = 2;
 
     protected $fillable = [
+        'user_id',
+        'name',
+        'email',
+        'phone',
+        'totalSum',
+        'deliverySum',
+        'adress',
         'description',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
+    public function movies()
+    {
+        return $this->belongsToMany(Movie::class, 'order_products')->withPivot('count', 'price');
+    }
+
+
+
+
 }
 
 //hasmany????

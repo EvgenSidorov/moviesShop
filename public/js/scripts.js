@@ -1,4 +1,4 @@
-$(function () {
+$(function (qualifiedName, value) {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -72,4 +72,21 @@ $(function () {
 
     });
 
+    // $('input[name="deliveryType"]').on('change', function (e) {
+    //     let delivery = $('.delivery');
+    //     if($(this).val() == '2') {
+    //         delivery.slideDown();
+    //     }else {
+    //         delivery.slideUp();
+    //     }
+    // })
+
+
+    $('input[name="deliveryType"]').on('change', function (e) {
+        $('.delivery').toggle('slow');
+        $('.sumDelivery').toggle('slow');
+        let delivery = $(this).val() == '2' ? 100 : 0
+        $('.sumDelivery span:last').text(delivery + " $");
+        $('.totalSum span').text(parseInt($('.itemSum span:last').text()) + delivery + " $")
+    })
 });

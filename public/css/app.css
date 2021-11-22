@@ -1,0 +1,24 @@
+.border-grey {
+    border: 1px solid #7d8089;
+}
+
+.bg-grey {
+    background-color: #cacaca;
+}
+
+.min-vh {
+    max-height: 250px;
+}
+
+.price-color {
+    color: #f6931f;
+    font-weight: bold;
+}
+.order-items a {
+    text-decoration-line: none;
+}
+
+.order-items a:hover {
+    color: #f6931f;
+}
+

@@ -13,8 +13,6 @@ class Controller extends BaseController
 
     public $title = 'EMPTY title';
 
-
-
     public function saveToBasket($items)
     {
         session()->put('basket', $items);
@@ -35,6 +33,15 @@ class Controller extends BaseController
         });
         return $allCount;
     }
+
+    public function getBasketTotalSum() {
+        $basketItems = $this->getBasket();
+        array_walk($basketItems, function ($basketItem) use (&$totalSum){
+            $totalSum += $basketItem['totalPrice'];
+        });
+        return $totalSum;
+    }
+
 
     public function getTitle()
     {

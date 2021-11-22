@@ -25,6 +25,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('totalSum');
             $table->unsignedInteger('deliverySum')->default(0);
 
+            $table->text('adress')->nullable();
             $table->text('description')->nullable();
 
             $table->timestamps();
@@ -38,6 +39,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('price')->default(0);
             $table->unsignedInteger('count')->default(1);
 
+
         });
     }
 
@@ -49,5 +51,6 @@ class CreateOrdersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_products');
     }
 }
