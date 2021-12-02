@@ -28,6 +28,11 @@ Route::get('/movies/{movie}', 'MoviesController@view')->name('app.movies.view');
 Route::get('/order', 'OrderController@index')->name('app.order')->middleware('auth');
 Route::post('/order', 'OrderController@store')->name('app.order.store')->middleware('auth');
 
+Route::get('/account', 'AccountController@index')->name('app.account');
+Route::get('/account/showAll', 'AccountController@showAll')->name('app.account.showAll');
+Route::get('/account/show/{order}', 'AccountController@show')->name('app.account.show');
+
+
 Route::group([
     'prefix' => '/basket',
     'as' => 'app.basket.'
@@ -41,3 +46,5 @@ Route::group(['prefix' => 'debug', 'as' => 'app.debug.'], function(){
     Route::get('/', 'DebugController@debug')->name('debug');
 
 });
+
+

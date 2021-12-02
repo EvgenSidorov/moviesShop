@@ -66,6 +66,8 @@ class OrderController extends Controller
                 'price' => $item['price'],
             ]);
         }
+
+        return redirect(route('app.account'));
 //        dd($order);
 //        dd($order->load(['products', 'movies']));
     }

@@ -20,7 +20,7 @@
             <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         @if(auth()->check())
-                        <li class="nav-item"><a class="nav-link" href="/">{{ auth()->user()->email }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('app.account') }}">{{ auth()->user()->email }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('app.logout') }}">Log out</a></li>
                         @else
                         <li class="nav-item"><a class="nav-link" href="{{ route('app.signUp') }}">Sign up</a></li>
